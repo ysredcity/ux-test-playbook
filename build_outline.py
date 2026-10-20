@@ -136,7 +136,13 @@ for si,sec in enumerate(c['sections']):
 c=chapters[2];add(2,'',c['intro'],kind='chapter-intro',extra='rule-index')
 for sec in c['sections']:
  bs=sec['blocks'];extra='form-demo' if any(b.get('number')==18 for b in bs) else ''
- add(2,sec['title'],bs,kind='rules',extra=extra)
+ if any(b['type']=='rule' for b in bs):
+  intro=''.join(render(b) for b in bs if b['type']!='rule')
+  cards=''.join(render(b).replace('<h3>','<img class="priority-illustration" src="assets/priority-'+str(b['number'])+'.svg" alt="'+html.escape(b['title'])+'" width="360" height="180"><h3>',1) for b in bs if b['type']=='rule')
+  controls='<div class="priority-controls"><input class="priority-slider" type="range" min="0" max="1000" value="0" step="1" aria-label="横向浏览规范卡片"><button class="priority-autoplay" type="button" aria-label="暂停自动滚动" title="暂停自动滚动"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></button></div>'
+  body=intro+'<div class="priority-carousel" role="region" aria-label="规范卡片"><div class="priority-rail" tabindex="0" aria-label="横向卡片，使用左右方向键浏览">'+cards+'</div>'+controls+'</div>'
+  add(2,sec['title'],bs,kind='rules',extra=extra,body=body)
+ else:add(2,sec['title'],bs,kind='rules',extra=extra)
 c=chapters[3]
 for sec in c['sections']:
  bs=sec['blocks'];title=sec['title']
