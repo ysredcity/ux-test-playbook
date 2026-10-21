@@ -147,3 +147,26 @@ a.signal-card:active{background:#e3ebff;border-color:#244be0}
 .priority-autoplay{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;min-width:36px;padding:0}.priority-autoplay svg{display:block;flex-shrink:0}
 
 .priority-carousel.no-overflow .priority-controls{display:none}
+
+/* Sidebar tools share one quiet, precisely aligned control surface. */
+.presentation-sidebar .sidebar-controls{background:var(--paper);border-top:1px solid var(--line);padding:16px 20px 20px}
+.presentation-sidebar .sidebar-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:0;border:1px solid #dedfe5;border-radius:6px;background:#fff}
+.presentation-sidebar .sidebar-tools>button,.presentation-sidebar .sidebar-tools>a{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:42px;min-height:42px;margin:0;padding:0 10px;border:0;border-radius:0;background:transparent;box-shadow:none;color:#555b68;font-family:var(--sans);font-size:11.5px;font-weight:500;line-height:1;letter-spacing:.015em;text-decoration:none;white-space:nowrap;cursor:pointer;transition:color 150ms ease,background-color 150ms ease}
+.presentation-sidebar .sidebar-tools>button{border-radius:5px 0 0 5px}
+.presentation-sidebar .sidebar-tools>a{border-left:1px solid #e4e5e9;border-radius:0 5px 5px 0}
+.presentation-sidebar .sidebar-tools .tool-icon{width:16px;height:16px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.presentation-sidebar .sidebar-tools .fullscreen-exit{display:none}
+.presentation-sidebar .sidebar-tools #fullscreen[aria-pressed=true] .fullscreen-enter{display:none}
+.presentation-sidebar .sidebar-tools #fullscreen[aria-pressed=true] .fullscreen-exit{display:block}
+.presentation-sidebar .sidebar-tools #fullscreen[aria-pressed=true]{background:#edf2ff;color:var(--accent)}
+@media(hover:hover){.presentation-sidebar .sidebar-tools>button:hover,.presentation-sidebar .sidebar-tools>a:hover{color:var(--accent);background:#f0f4ff}}
+.presentation-sidebar .sidebar-tools>button:active,.presentation-sidebar .sidebar-tools>a:active{background:#e5ecff;color:#244be0}
+.presentation-sidebar .sidebar-tools>button:focus-visible,.presentation-sidebar .sidebar-tools>a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;position:relative;z-index:1}
+.presentation-sidebar .sidebar-tools>[hidden]{display:none}
+.presentation-sidebar .sidebar-tools:has(>#fullscreen[hidden]){grid-template-columns:1fr}
+.presentation-sidebar .sidebar-tools:has(>#fullscreen[hidden])>a{border-left:0;border-radius:5px}
+@media(max-width:760px){.presentation-sidebar .sidebar-controls{padding:14px 20px 18px}.presentation-sidebar .sidebar-tools>button,.presentation-sidebar .sidebar-tools>a{height:44px;min-height:44px;font-size:12px}}
+@media(prefers-reduced-motion:reduce){.presentation-sidebar .sidebar-tools>button,.presentation-sidebar .sidebar-tools>a{transition:none}}
+.presentation-sidebar .sidebar-controls{padding:12px 20px 14px}
+.presentation-sidebar .sidebar-tools>button,.presentation-sidebar .sidebar-tools>a{height:34px;min-height:34px}
+@media(max-width:760px){.presentation-sidebar .sidebar-controls{padding:12px 20px 14px}.presentation-sidebar .sidebar-tools>button,.presentation-sidebar .sidebar-tools>a{height:38px;min-height:38px}}
